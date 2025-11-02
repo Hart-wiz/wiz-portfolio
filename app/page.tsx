@@ -4,16 +4,20 @@ import {
   Menu,
   X,
   Github,
+  ArrowUpRight,
   Linkedin,
   Mail,
   ExternalLink,
   ChevronRight,
   Code2,
   Zap,
+  Trophy,
   Database,
   Cloud,
 } from "lucide-react";
 import Nav from "@/components/Nav";
+import Footer from "@/components/Footer";
+import ContactCard from "@/components/ContactCard";
 
 interface Project {
   id: number;
@@ -38,6 +42,12 @@ interface Skill {
   category: string;
   proficiency: number;
   items: { name: string; level: "Expert" | "Advanced" | "Intermediate" }[];
+}
+
+interface Certification {
+  title: string;
+  issuer: string;
+  year: string;
 }
 
 const Portfolio: React.FC = () => {
@@ -222,12 +232,18 @@ const Portfolio: React.FC = () => {
     },
   ];
 
-  const navLinks = [
-    { id: "home", label: "Home" },
-    { id: "about", label: "About" },
-    { id: "experience", label: "Experience" },
-    { id: "projects", label: "Projects" },
-    { id: "contact", label: "Contact" },
+  const certifications: Certification[] = [
+    {
+      title: "AWS Certified Solutions Architect",
+      issuer: "Amazon Web Services",
+      year: "2023",
+    },
+    {
+      title: "Kubernetes Application Developer",
+      issuer: "Cloud Native Computing Foundation",
+      year: "2022",
+    },
+    { title: "Professional Scrum Master", issuer: "Scrum.org", year: "2021" },
   ];
 
   return (
@@ -236,44 +252,73 @@ const Portfolio: React.FC = () => {
       <Nav />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4 max-w-7xl mx-auto">
-        <div className="max-w-3xl">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight text-gray-900">
-            Full-Stack Engineer & System Architect
-          </h1>
-          <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-            I craft scalable web applications and distributed systems.
-            Specializing in high-performance backend architecture, modern
-            frontend development, and cloud infrastructure. Currently building
-            at TechCorp Inc.
-          </p>
-          <div className="flex gap-4 flex-wrap">
-            <a
-              href="#projects"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors"
-            >
-              View My Work <ChevronRight size={20} />
-            </a>
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2 px-6 py-3 border-2 border-gray-300 text-gray-900 rounded-lg font-medium hover:border-gray-400 transition-colors"
-            >
-              Contact Me
-            </a>
+      <section className="pt-25  md:pt-40 pb-2 px-4 max-w-6xl mx-auto ">
+        <div className="mb-6">
+          <div className="inline-block px-4 py-2 bg-blue-50 rounded-full border border-blue-200 mb-6">
+            <p className="text-sm font-semibold text-blue-600">
+              Senior Full-Stack Engineer & System Architect
+            </p>
           </div>
-          <div className="mt-12 flex gap-6 text-sm text-gray-600">
-            <div>
-              <span className="font-semibold text-gray-900">5+</span> Years
-              Experience
-            </div>
-            <div>
-              <span className="font-semibold text-gray-900">50+</span> Projects
-              Delivered
-            </div>
-            <div>
-              <span className="font-semibold text-gray-900">20M+</span> Users
-              Impacted
-            </div>
+        </div>
+
+        <h1 className="text-4xl center md:text-5xl font-bold leading-tight mb-6 text-gray-900">
+          Building Scalable,
+          <br />
+          High-Performance Systems
+        </h1>
+
+        <p className="text-xl text-gray-600 mb-8 leading-relaxed max-w-2xl">
+          I architect and develop distributed systems, microservices, and modern
+          web applications. Proven track record of scaling platforms to 500K+
+          users, optimizing performance by 65%, and leading technical teams.
+        </p>
+
+        <div className="flex gap-4 flex-wrap mb-16">
+          <a
+            href="#projects"
+            className="inline-flex items-center gap-2 px-6 py-3.5 bg-linear-to-r from-blue-600 to-cyan-600 text-white rounded-lg font-semibold hover:shadow-xl hover:shadow-blue-500/30 transition-all"
+          >
+            View My Work <ArrowUpRight size={20} />
+          </a>
+          <a
+            href="#contact"
+            className="inline-flex items-center gap-2 px-6 py-3.5 border-2 border-gray-300 text-gray-900 rounded-lg font-semibold hover:border-gray-400 hover:bg-gray-50 transition-all"
+          >
+            Let's Talk
+          </a>
+          <a
+            href="#"
+            className="inline-flex items-center gap-2 px-6 py-3.5 border-2 border-gray-300 text-gray-900 rounded-lg font-semibold hover:border-gray-400 hover:bg-gray-50 transition-all"
+          >
+            <Github size={20} /> GitHub
+          </a>
+        </div>
+
+        <div className="grid grid-cols-3 md:grid-cols-6 gap-6 pt-8 border-t border-gray-200">
+          <div>
+            <p className="md:text-3xl text-2xl font-bold text-blue-600">6+</p>
+            <p className="text-sm text-gray-600 mt-1">Years Experience</p>
+          </div>
+          <div>
+            <p className="md:text-3xl text-2xl font-bold text-blue-600">
+              500K+
+            </p>
+            <p className="text-sm text-gray-600 mt-1">Users Scaled</p>
+          </div>
+          <div>
+            <p className="md:text-3xl text-2xl  font-bold text-blue-600">
+              50M+
+            </p>
+            <p className="text-sm text-gray-600 mt-1">Events/Day</p>
+          </div>
+
+          <div>
+            <p className="md:text-3xl text-2xl  font-bold text-blue-600">18</p>
+            <p className="text-sm text-gray-600 mt-1">Microservices</p>
+          </div>
+          <div>
+            <p className="md:text-3xl text-2xl  font-bold text-blue-600">65%</p>
+            <p className="text-sm text-gray-600 mt-1">Latency Reduction</p>
           </div>
         </div>
       </section>
@@ -475,44 +520,37 @@ const Portfolio: React.FC = () => {
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section
-        className="py-20 px-4 bg-linear-to-br from-blue-600 to-cyan-600 text-white"
-        id="contact"
-      >
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-6">Ready to Work Together?</h2>
-          <p className="text-xl text-blue-100 mb-8">
-            I'm always interested in discussing new projects, opportunities, and
-            collaborations.
-          </p>
-          <div className="flex gap-6 justify-center flex-wrap">
-            <a
-              href="mailto:alex@example.com"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-white text-blue-600 rounded-lg font-medium hover:bg-blue-50 transition-colors"
-            >
-              <Mail size={20} /> Send Email
-            </a>
-            <a
-              href="#"
-              className="inline-flex items-center gap-2 px-6 py-3 border-2 border-white text-white rounded-lg font-medium hover:bg-white/10 transition-colors"
-            >
-              <Github size={20} /> GitHub
-            </a>
-            <a
-              href="#"
-              className="inline-flex items-center gap-2 px-6 py-3 border-2 border-white text-white rounded-lg font-medium hover:bg-white/10 transition-colors"
-            >
-              <Linkedin size={20} /> LinkedIn
-            </a>
+      {/* Certifications */}
+      <section className="py-24 px-4 bg-gray-50 border-y border-gray-200">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-bold mb-16">
+            Certifications & Credentials
+          </h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            {certifications.map((cert, i) => (
+              <div
+                key={i}
+                className="bg-white p-6 rounded-xl border border-gray-200 hover:border-blue-300 hover:shadow-lg transition-all"
+              >
+                <Trophy className="w-8 h-8 text-blue-600 mb-4" />
+                <h3 className="font-bold text-lg text-gray-900 mb-2">
+                  {cert.title}
+                </h3>
+                <p className="text-gray-600 text-sm mb-3">{cert.issuer}</p>
+                <p className="text-xs font-semibold text-blue-600">
+                  {cert.year}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
+      {/* Contact Section */}
+      <ContactCard />
+
       {/* Footer */}
-      <footer className="border-t border-gray-200 py-8 px-4 text-center text-gray-600 text-sm">
-        <p>© 2024 Alex Dev. Built with Next.js, TypeScript & Tailwind CSS</p>
-      </footer>
+      <Footer />
     </div>
   );
 };
